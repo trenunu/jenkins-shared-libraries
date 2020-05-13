@@ -1,8 +1,7 @@
 def call(project, addr) {
-    sh """helm upgrade \
+    sh """helm upgrade -i \
         ${project} \
-        helm/${project} -i \
-        --tiller-namespace ${project}-build \
+        helm/${project} \
         --namespace ${project} \
         --set image.tag=${currentBuild.displayName} \
         --set ingress.host=${addr} \
